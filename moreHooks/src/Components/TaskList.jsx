@@ -28,18 +28,13 @@ const TaskList = () =>{
     const handleAddTask = (text) => dispatch ({type:"Add_task" , payload:text})
 
     const handleToggleTask = (id) =>{
-        if (tasks[id].hidden == true){
-            tasks[id].hidden = false}
-        else{
-            tasks[id].hidden = true}
-
         dispatch({type:"Toggle_Task" ,  payload:id})
         inputRef.current.focus()
     }
 
     function handleBackToTop(id){
         if (inputRef.current){
-            inputRef.current.focus()
+            inputRef.current.focus()    
         }
     }
 
@@ -59,7 +54,7 @@ const TaskList = () =>{
 
             <ul>
                 {tasks.map((el , i)=>(
-                    (<li key={i}> <span style={{textDecoration: el.hidden?"line-through" : "none"}}>{el.hidden ? "Task is hidden" : el.text}</span><button onClick={()=>handleToggleTask(i)}>Toggle</button></li>)
+                    (<li key={el.id}> <span style={{textDecoration: el.hidden?"line-through" : "none"}}>{el.hidden ? "Task is hidden" : el.text}</span><button onClick={()=>handleToggleTask(el.id)}>Toggle</button></li>)
                 ))}
             </ul>
 
